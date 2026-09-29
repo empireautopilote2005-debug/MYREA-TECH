@@ -1,0 +1,28 @@
+name: Extract MYREA TECH SaaS V1
+
+on:
+  push:
+    paths:
+      - "MYREA_TECH_SAAS_V1.zip"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract archive
+        run: |
+          rm -rf saas-v1-inspection
+          mkdir -p saas-v1-inspection
+          unzip -o "MYREA_TECH_SAAS_V1.zip" -d saas-v1-inspection
+      - name: Commit extracted V1
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add saas-v1-inspection
+          git commit -m "Extract MYREA TECH SaaS V1 for deployment review" || exit 0
+          git push
