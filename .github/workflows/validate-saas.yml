@@ -1,7 +1,7 @@
 name: Validate SaaS
 on:
   push:
-    branches: [main, saas-v1-final]
+    branches: [main, saas-v1-final, rebuild-expert]
   pull_request:
     branches: [main]
 jobs:
