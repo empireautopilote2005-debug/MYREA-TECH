@@ -1,26 +1,24 @@
-# MYREA TECH MVP - Deploy Ready
+# MYREA TECH — Déploiement V1
 
-## Déploiement Cloudflare Pages
+La V1 est une application Next.js App Router.
 
-1. Installer les dépendances:
-npm install
+## Cloudflare Pages
 
-2. Configurer les variables:
-.env.local
+- Framework preset: **Next.js (Static HTML Export)**
+- Build command: `npm run build`
+- Build output directory: `out`
+- Root directory: `/`
+- Production branch: `main`
 
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+Le dépôt contient également `MYREA_TECH_SAAS_V1.zip` comme archive de sauvegarde.
 
-3. Connecter le dépôt GitHub à Cloudflare Pages.
+## Variables Supabase
 
-Build command:
-npm run build
+Configurer dans Cloudflare Pages > Settings > Environment variables:
 
-Output:
-.next
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
-## Stack
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Supabase
+## Important
+
+Ne pas utiliser `wrangler deploy` pour cette V1 statique. Le déploiement attendu est le build Next.js vers `out`.
