@@ -40,7 +40,7 @@ function Projects({u}:{u:U}){
   }
 
   async function loadProject(id:string){
-    const p=(projects||[]).find(x=>x.id===id) || selected;
+    const {data:p}=await supabase.from('projects').select('*').eq('id',id).single();
     if(!p) return;
     setSelected(p);
     setCommunity(p.community_id);
