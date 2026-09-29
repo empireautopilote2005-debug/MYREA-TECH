@@ -1,0 +1,12 @@
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:#0f172a}
+a{color:inherit}
+.min-h-screen{min-height:100vh}
+.p-10{padding:2.5rem}
+.text-4xl{font-size:2.25rem;line-height:2.5rem}
+.text-3xl{font-size:1.875rem;line-height:2.25rem}
+.font-bold{font-weight:700}
+.rounded-xl{border-radius:.75rem}
+.border{border:1px solid #e2e8f0}
+.shadow{box-shadow:0 10px 25px rgba(15,23,42,.08)}
