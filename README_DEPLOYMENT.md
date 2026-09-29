@@ -1,24 +1,28 @@
 # MYREA TECH — Déploiement V1
 
-La V1 est une application Next.js App Router.
+## Déploiement actuellement utilisé
 
-## Cloudflare Pages
+La version réellement servie par le projet est le **Cloudflare Worker** défini par `wrangler.toml` :
 
-- Framework preset: **Next.js (Static HTML Export)**
-- Build command: `npm run build`
-- Build output directory: `out`
-- Root directory: `/`
-- Production branch: `main`
+- Worker : `myrea-tech`
+- Entrée : `src/index.js`
+- Branche : `main`
+- Commande Cloudflare : `npx wrangler deploy`
 
-Le dépôt contient également `MYREA_TECH_SAAS_V1.zip` comme archive de sauvegarde.
-
-## Variables Supabase
-
-Configurer dans Cloudflare Pages > Settings > Environment variables:
-
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+Le fichier `src/index.js` contient maintenant la version fonctionnelle de l'interface et de ses routes. Les fichiers Next.js présents dans `app/` restent une base de travail, mais **ils ne pilotent pas le Worker actuellement déployé**.
 
 ## Important
 
-Ne pas utiliser `wrangler deploy` pour cette V1 statique. Le déploiement attendu est le build Next.js vers `out`.
+Ne pas modifier uniquement `app/page.tsx` en pensant modifier le site actuellement servi par le Worker. Pour une correction immédiate du site en production Worker, modifier `src/index.js`, puis déployer.
+
+## Routes V1
+
+- `/` accueil
+- `/dashboard` tableau de bord
+- `/communautes` liste des communautés
+- `/communautes/nouvelle` création d'une communauté
+- `/idees`
+- `/projets`
+- `/actifs`
+
+La création de communauté de cette V1 est stockée localement dans le navigateur. La prochaine étape de persistance multi-appareils est Supabase.
