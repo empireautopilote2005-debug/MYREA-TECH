@@ -14,3 +14,4 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
+      - run: test -d out && test -f out/index.html
