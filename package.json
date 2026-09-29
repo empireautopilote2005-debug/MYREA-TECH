@@ -1,6 +1,21 @@
 {
-  "name":"myrea-tech",
-  "private":true,
-  "scripts":{"dev":"wrangler dev","deploy":"wrangler deploy"},
-  "devDependencies":{"wrangler":"^4.0.0"}
+  "name": "myrea-tech-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "@supabase/supabase-js": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "tailwindcss": "latest"
+  }
 }
