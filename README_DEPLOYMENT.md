@@ -1,28 +1,21 @@
-# MYREA TECH — Déploiement V1
+# MYRÉA TECH — Production Cloudflare Pages
 
-## Déploiement actuellement utilisé
+## Build
+- Framework : Next.js App Router
+- Output : static export
+- Command : `npm run build`
+- Output directory : `out`
+- Node : 22+
 
-La version réellement servie par le projet est le **Cloudflare Worker** défini par `wrangler.toml` :
+## Variables Cloudflare Pages
+`NEXT_PUBLIC_SUPABASE_URL`
+`NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`
 
-- Worker : `myrea-tech`
-- Entrée : `src/index.js`
-- Branche : `main`
-- Commande Cloudflare : `npx wrangler deploy`
+## Supabase
+Appliquer `supabase/migrations/001_initial.sql` au projet MYRÉA TECH. Les tables publiques doivent rester protégées par RLS et les droits Data API doivent être accordés explicitement.
 
-Le fichier `src/index.js` contient maintenant la version fonctionnelle de l'interface et de ses routes. Les fichiers Next.js présents dans `app/` restent une base de travail, mais **ils ne pilotent pas le Worker actuellement déployé**.
+## Vérification
+Après configuration des variables, ouvrir :
+`/`, `/login`, `/signup`, `/dashboard`, `/communautes`, `/idees`, `/projets`, `/contributions`, `/actifs`.
 
-## Important
-
-Ne pas modifier uniquement `app/page.tsx` en pensant modifier le site actuellement servi par le Worker. Pour une correction immédiate du site en production Worker, modifier `src/index.js`, puis déployer.
-
-## Routes V1
-
-- `/` accueil
-- `/dashboard` tableau de bord
-- `/communautes` liste des communautés
-- `/communautes/nouvelle` création d'une communauté
-- `/idees`
-- `/projets`
-- `/actifs`
-
-La création de communauté de cette V1 est stockée localement dans le navigateur. La prochaine étape de persistance multi-appareils est Supabase.
+Les routes privées doivent rediriger vers la connexion et les requêtes de données restent protégées par RLS.
